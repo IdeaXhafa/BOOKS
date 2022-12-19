@@ -1,0 +1,29 @@
+@model BOOKS.Models.Pagesa
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+
+
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:black;">
+        <tr>
+            <td bgcolor="white">ID</td>
+            <td bgcolor="white">Shuma</td>
+            <td bgcolor="white">Aktiv</td>
+            <td bgcolor="white">Klienti ID</td>
+            <td bgcolor="white">Data E Pageses</td>
+            <td bgcolor="white">Data E Skadimit</td>
+
+        </tr>
+        <tr>
+            <td bgcolor="white">@Model.id</td>
+            <td bgcolor="white">@Model.Shuma</td>
+            <td bgcolor="white">@Model.Active</td>
+            <td bgcolor="white">@Model.ClientId</td>
+            <td bgcolor="white">@Model.DataEPageses</td>
+            <td bgcolor="white">@Model.DataESkadimit</td>
+
+        </tr>
+    </table>
+</div>

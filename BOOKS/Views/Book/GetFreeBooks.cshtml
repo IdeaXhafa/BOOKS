@@ -1,0 +1,86 @@
+@* @model IEnumerable<BOOKS.Models.Book> *@
+
+@using BOOKS.Areas.Identity.Data;
+
+@model PaginatedList<BOOKS.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<title>Index</title>
+
+<!-- Page Heading -->
+<h1 style="color:white;">Librat e Lira</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @* <div class="float-right">
+            <a class="btn btn-primary" asp-action="Create">Create new</a>
+        </div> *@
+        <h6 class="m-0 font-weight-bold text-primary"></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="float-right">
+                <form asp-action="GetFreeBooks" method="get">
+                    <div class="form-actions no-color">
+                        <p>
+                            Find by name: <input type="text" name="SearchString" class="form-control form-control-sm" value="@ViewData["CurrentFilter"]" />
+                            <input type="submit" value="Search" class="btn btn-default" /> |
+                            <a asp-action="Index">Back to Full List</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titulli</th>
+                        <th>Autori</th>
+                        <th>E Lire</th>
+                        <th>Veprime</th>
+                    </tr>
+                </thead>
+                @* <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Titulli</th>
+                        <th>Autori</th>
+                        <th>E Lire</th>
+                        <th>Veprime</th>
+                    </tr>
+                </tfoot> *@
+                <tbody> 
+                    
+                @if(Model != null)
+                {
+                @foreach (var item in Model)
+                {<tr>
+                    <td>@Html.DisplayFor(model => item.id)</td>
+                    <td>@Html.DisplayFor(model => item.Titulli)</td>
+                    <td>@Html.DisplayFor(model => item.Autori)</td>
+                    @* <td>@Html.DisplayFor(model => item.E_Lire)</td> *@
+                    @* <td>@((@Html.DisplayFor(model => item.E_Lire)) == 'true' ? "eshte e lire":"nuk eshte e lire")</td> *@
+                    @* <td>@(item.E_Lire) == 'True'</td>*@
+                    @if(item.E_Lire == true)
+                    {
+                        <td>@Html.DisplayFor(model => item.E_Lire)</td>
+                    } else
+                    {
+                        <td>GABIM E KE BO</td>
+                    }
+                    <td>
+                        <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.id })">Edit</a>
+                        <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.id })">Details</a>
+                        <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id })">Delete</a>
+                    </td>
+                    </tr>
+                }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>

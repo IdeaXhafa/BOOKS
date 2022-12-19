@@ -1,0 +1,12 @@
+
+@* @using BOOKS.Areas.Identity.Pages.Account
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if(@User.IsInRole("admin")) *@
+
+<title>
+    Index
+</title>
