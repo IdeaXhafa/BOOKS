@@ -14,6 +14,6 @@ namespace BOOKS.Models
 
         public DateTime DataESkadimit { get; set; }
         // public Client Client { get; set; }
-        public int ClientId { get; set; }
+        public int Klienti_id { get; set; }
     }
 }

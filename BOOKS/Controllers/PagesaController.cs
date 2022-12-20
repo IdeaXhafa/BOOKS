@@ -51,7 +51,7 @@ namespace BOOKS.Controllers
         public IActionResult Create()
         {
             ViewBag.shuma = new List<int>() { 5, 10, 15 }; 
-            ViewBag.klientetid = _context.Clients.Where(k => k.Aktiv==false).ToList();
+            ViewBag.klientetid = _context.Klienti.Where(k => k.Aktiv==false).ToList();
             return View();
         }
 
@@ -81,7 +81,7 @@ namespace BOOKS.Controllers
                             break;
                     }
                     _context.Add(pagesa);
-                    Client klienti = _context.Clients.Where(k => k.id == pagesa.ClientId).First();
+                    Klienti klienti = _context.Klienti.Where(k => k.id == pagesa.Klienti_id).First();
                     klienti.Aktiv = true;
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -190,7 +190,7 @@ namespace BOOKS.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var pagesa = await _context.Pagesa.FindAsync(id);
-            var klienti = _context.Clients.Where(k => k.id == pagesa.ClientId).First();
+            var klienti = _context.Klienti.Where(k => k.id == pagesa.Klienti_id).First();
             klienti.Aktiv = false;
             _context.Pagesa.Remove(pagesa);
             await _context.SaveChangesAsync();
