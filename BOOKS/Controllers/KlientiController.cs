@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BOOKS.Controllers
 {
-    public class ClientController : Controller
+    public class KlientiController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public ClientController(ApplicationDbContext context)
+        public KlientiController(ApplicationDbContext context)
         {
             _context = context;
         }

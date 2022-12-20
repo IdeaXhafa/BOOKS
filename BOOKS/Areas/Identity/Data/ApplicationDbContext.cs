@@ -28,7 +28,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
         // builder.Entity<Pagesa>().HasOne(a => a.Client).WithMany(b => b.Pagesa).HasForeignKey(c => c.ClientId).OnDelete(DeleteBehavior.Cascade);
 
-        builder.Entity<Client>().ToTable("Klientet");
+        builder.Entity<Client>().ToTable("Client");
         builder.Entity<Pagesa>().ToTable("Pagesa");
 
         // Customize the ASP.NET Identity model and override the defaults if needed.
