@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using BOOKS.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BOOKS.Areas.Identity.Data;
 
@@ -22,8 +26,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<Pagesa>().HasOne(a => a.Client).WithMany(b => b.Pagesa).HasForeignKey(c => c.ClientId).OnDelete(DeleteBehavior.Cascade);
+        // builder.Entity<Pagesa>().HasOne(a => a.Client).WithMany(b => b.Pagesa).HasForeignKey(c => c.ClientId).OnDelete(DeleteBehavior.Cascade);
 
+        builder.Entity<Client>().ToTable("Client");
+        builder.Entity<Pagesa>().ToTable("Pagesa");
 
         // Customize the ASP.NET Identity model and override the defaults if needed.
         // For example, you can rename the ASP.NET Identity table names and more.
