@@ -20,6 +20,6 @@ namespace BOOKS.Models
         public bool Aktiv { get; set; }
         public DateTime created_at { get; set; }
         public DateTime deleted_at { get; set; }
-        public ICollection<Pagesa> Pagesa { get; set; }
+        // public ICollection<Pagesa> Pagesa { get; set; }
     }
 }

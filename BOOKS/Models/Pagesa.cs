@@ -13,7 +13,7 @@ namespace BOOKS.Models
         public DateTime DataEPageses { get; set; }
 
         public DateTime DataESkadimit { get; set; }
-        public Client Client { get; set; }
+        // public Client Client { get; set; }
         public int ClientId { get; set; }
     }
 }
