@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    string imagePath = Url.Content("~/images/free-shipping.jpg"); 
+    //string imagePath = Url.Content("~/images/free-shipping.jpg"); 
 }
 
 @* <div class="text-center">
@@ -53,8 +53,42 @@
         color:var(--light-color);
     }
 
-    .fa-shipping-fast:before {
-    content: "\f48b";
+    .deal{
+        background:#f3f3f3;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap:1.5rem;
+    }
+
+    .deal .content{
+        flex:1 1 42rem;
+    }
+
+    .deal .image{
+        flex:1 1 42rem;
+    }
+
+    .deal .image img{
+        width: 100%;
+    }
+
+    .deal .content h3{
+        color: #630436;
+        font-size: 2.5rem;
+        padding-bottom: .5rem;
+    }
+
+    .deal .content h1{
+        color:var(--black);
+        font-size: 4rem;
+    }
+
+    .deal .content p{
+        padding:1rem 0;
+        color:var(--light-color);
+        font-size: 1.4rem;
+        line-height: 2;
     }
 </style>
 
@@ -63,8 +97,7 @@
 <section class="icons-container">
 
     <div class="icons">
-        @* <i class="fas fa-shipping-fast"></i> *@
-        <img src="@imagePath" alt="ASP.NET" style="width:350px;height:260px" />
+        <img src="images/free-shipping.jpg" style="width:170px;height:180px"/>
         <div class="content">
             <h3>free shipping</h3>
             <p>order over $100</p>
@@ -72,7 +105,7 @@
     </div>
 
     <div class="icons">
-        <i class="fas fa-lock"></i>
+        <img src="images/secure.jpg" style="width:100px;height:100px"/>
         <div class="content">
             <h3>secure payment</h3>
             <p>100 secure payment</p>
@@ -80,11 +113,26 @@
     </div>
 
     <div class="icons">
-        <i class="fas fa-redo-alt"></i>
+        <img src="images/returns.png" style="width:100px;height:100px"/>
         <div class="content">
             <h3>easy returns</h3>
             <p>10 days returns</p>
         </div>
+    </div>
+
+</section>
+
+<section class="deal">
+
+    <div class="content">
+        <h3>deal of the day</h3>
+        <h1>upto 50% off</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis in atque dolore tempora quaerat at fuga dolorum natus velit.</p>
+        <a class="btn">shop now</a>
+    </div>
+
+    <div class="image">
+        
     </div>
 
 </section>
