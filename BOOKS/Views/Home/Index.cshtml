@@ -1,5 +1,8 @@
-﻿@{
+﻿
+
+@{
     ViewData["Title"] = "Home Page";
+    string imagePath = Url.Content("~/images/free-shipping.jpg"); 
 }
 
 @* <div class="text-center">
@@ -21,6 +24,67 @@
         opacity: 0.7;
     }
 
+    .icons-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap:1.5rem;
+    }
+
+    .icons-container .icons{
+        display: flex;
+        align-items: center;
+        gap:1.5rem;
+        padding:2rem 0;
+    }
+
+    .icons-container .icons i{
+        font-size: 3.5rem;
+        color:var(--green);
+    }
+
+    .icons-container .icons h3{
+        font-size: 2.2rem;
+        color:var(--black);
+        padding-bottom: .5rem;
+    }
+
+    .icons-container .icons p{
+        font-size: 1.4rem;
+        color:var(--light-color);
+    }
+
+    .fa-shipping-fast:before {
+    content: "\f48b";
+    }
 </style>
 
 <h1 style="color:white;">Welcome to our Library Management!</h1>
+
+<section class="icons-container">
+
+    <div class="icons">
+        @* <i class="fas fa-shipping-fast"></i> *@
+        <img src="@imagePath" alt="ASP.NET" style="width:350px;height:260px" />
+        <div class="content">
+            <h3>free shipping</h3>
+            <p>order over $100</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-lock"></i>
+        <div class="content">
+            <h3>secure payment</h3>
+            <p>100 secure payment</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-redo-alt"></i>
+        <div class="content">
+            <h3>easy returns</h3>
+            <p>10 days returns</p>
+        </div>
+    </div>
+
+</section>

@@ -29,6 +29,8 @@
                             </li>
                         }
                         @if(User.IsInRole(Roles.Admin.ToString())){
+
+                        //all local users can view
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
                         </li>
@@ -38,6 +40,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Pagesa" asp-action="Index">Payment</a>
                         </li>
+
+                        //only Users that are logged in can view Huazimin dhe Rezervimin
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Huazimi" asp-action="Index">Huazimi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Rezervimi" asp-action="Index">Rezervimi</a>
+                        </li>
+                        }
                         <li class="nav-item">
                         <a class="nav-link" href="/statistika">
                             <i class="fas fa-fw fa-table"></i>
