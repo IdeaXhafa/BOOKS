@@ -1,5 +1,4 @@
 ﻿
-
 @{
     ViewData["Title"] = "Home Page";
     //string imagePath = Url.Content("~/images/free-shipping.jpg"); 
@@ -10,8 +9,34 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div> *@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    @* <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> *@
+
+    <!-- Custom fonts for this template -->
+    @* <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"> *@
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    @* <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> *@
+
+</head>
+
+<script src="/js/script.js"></script>
+
 <style>
-    h1 {
+    @* h1 {
         color: white;
         text-align: center;
         margin: 100px;
@@ -89,15 +114,41 @@
         color:var(--light-color);
         font-size: 1.4rem;
         line-height: 2;
-    }
+    } *@
 </style>
 
 <h1 style="color:white;">Welcome to our Library Management!</h1>
 
+<section class="home" id="home">
+
+    <div class="row">
+
+        <div class="content">
+            <h3>upto 80% off</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deserunt nostrum accusamus. Nam alias sit necessitatibus, aliquid ex minima at!</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="swiper books-slider">
+            <div class="swiper-wrapper">
+                <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="image/book-5.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="image/book-6.png" alt=""></a>
+            </div>
+            <img src="image/stand.png" class="stand" alt="">
+        </div>
+
+    </div>
+
+</section>
+
 <section class="icons-container">
 
     <div class="icons">
-        <img src="images/free-shipping.jpg" style="width:170px;height:180px"/>
+        <img src="images/shipping.jpg" style="width:90px;height:90px"/>
         <div class="content">
             <h3>free shipping</h3>
             <p>order over $100</p>
@@ -113,7 +164,7 @@
     </div>
 
     <div class="icons">
-        <img src="images/returns.png" style="width:100px;height:100px"/>
+        <img src="images/returns.png" style="width:90px;height:90px"/>
         <div class="content">
             <h3>easy returns</h3>
             <p>10 days returns</p>
