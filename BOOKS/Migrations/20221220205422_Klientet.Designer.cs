@@ -4,6 +4,7 @@ using BOOKS.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BOOKS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221220205422_Klientet")]
+    partial class Klientet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,34 +124,6 @@ namespace BOOKS.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("BOOKS.Models.Huazimi", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<bool>("Aktiv")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataKthimit")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataPritjes")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Klienti_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Libra_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Huazimi", (string)null);
-                });
-
             modelBuilder.Entity("BOOKS.Models.Klienti", b =>
                 {
                     b.Property<int>("id")
@@ -210,34 +184,6 @@ namespace BOOKS.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Pagesa", (string)null);
-                });
-
-            modelBuilder.Entity("BOOKS.Models.Rezervimi", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<bool>("Aktiv")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Klienti_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Libra_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("deleted_at")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Rezervimi", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

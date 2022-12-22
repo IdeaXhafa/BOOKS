@@ -1,4 +1,4 @@
-﻿@model Client
+﻿@model Klienti
 
 @{
     ViewData["Title"] = "Create";
@@ -12,7 +12,7 @@
         <form class="form" asp-action="Create" method="post">
             <div class="modal-header">
                 <h4 class="modal-title">Shto Klient</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location='/client';">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location='/klienti';">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="button" class="btn btn-dark" value="Anulo" onclick="window.location='/client';">
+                <input type="button" class="btn btn-dark" value="Anulo" onclick="window.location='/klienti';">
                 <input type="submit" value="Create" class="btn btn-primary float-right">
             </div>
         </form>

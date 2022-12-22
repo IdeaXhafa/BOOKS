@@ -1,6 +1,5 @@
-﻿@using BOOKS.Areas.Identity.Data;
-
-@model PaginatedList<BOOKS.Models.Client>
+@using BOOKS.Areas.Identity.Data;
+@model PaginatedList<BOOKS.Models.Huazimi>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,65 +8,56 @@
 <title>Index</title>
 
 <!-- Page Heading -->
-<h1 style="color:white;">Klientet</h1>
+<h1 style="color:white;">Huazimet</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="float-right">
-            <a class="btn btn-primary" asp-action="Create">Create new</a>
+            <a class="btn btn-primary" asp-controller="Huazimi" asp-action="Create">Huazo</a>
         </div>
         <h6 class="m-0 font-weight-bold text-primary"></h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <div class="float-right">
-                <form asp-action="Index" method="get">
-                    <div class="form-actions no-color">
-                        <p>
-                            Find by name: <input type="text" name="SearchString" class="form-control form-control-sm" value="@ViewData["CurrentFilter"]" />
-                            <input type="submit" value="Search" class="btn btn-default" /> |
-                            <a asp-action="Index">Back to Full List</a>
-                        </p>
-                    </div>
-                </form>
-            </div>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Emri</th>
-                        <th>Email</th>
-                        <th>NumriTel</th>
+                        <th>DataPritjes</th>
+                        <th>DataKthimit</th>
+                        <th>Klienti_id</th>
+                        <th>Libra_id</th>
                         <th>Aktiv</th>
-                        <th>Created</th>
-
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>#</th>
-                        <th>Emri</th>
-                        <th>Email</th>
-                        <th>NumriTel</th>
+                        <th>DataPritjes</th>
+                        <th>DataKthimit</th>
+                        <th>Klienti_id</th>
+                        <th>Libra_id</th>
                         <th>Aktiv</th>
-                        <th>Created</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(model => item.id)</td>
-                            <td>@Html.DisplayFor(model => item.Emri)</td>
-                            <td>@Html.DisplayFor(model => item.Email)</td>
-                            <td>@Html.DisplayFor(model => item.NumriTel)</td>
+                            <td>@Html.DisplayFor(model => item.DataPritjes)</td>
+                            <td>@Html.DisplayFor(model => item.DataKthimit)</td>
+                            <td>@Html.DisplayFor(model => item.Klienti_id)</td>
+                            <td>@Html.DisplayFor(model => item.Libra_id)</td>
                             <td>@Html.DisplayFor(model => item.Aktiv)</td>
-                            <td>@Html.DisplayFor(model => item.created_at)</td>
                             <td>
-                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.id })">Edit</a>
-                                <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.id })">Details</a>
-                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id })">Delete</a>
+
+                                @if (item.Aktiv)
+                                {
+                                    <a class="btn btn-primary" asp-action="Kthe" asp-route-id="@item.id">Kthe</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id })">Delete</a>
+                                }
                             </td>
                         </tr>
                     }
@@ -104,5 +94,5 @@
             </li>
         </ul>
     </div>
-</div>
 
+</div>

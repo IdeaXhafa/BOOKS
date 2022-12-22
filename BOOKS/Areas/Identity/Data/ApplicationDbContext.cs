@@ -19,8 +19,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<Book> Books {get;set;}
-    public DbSet<Client> Clients {get;set;}
+    public DbSet<Klienti> Klienti {get;set;}
     public DbSet<Pagesa> Pagesa {get;set;}
+    public DbSet<Huazimi> Huazimi { get; set; }
+    public DbSet<Rezervimi> Rezervimi { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -28,8 +30,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
         // builder.Entity<Pagesa>().HasOne(a => a.Client).WithMany(b => b.Pagesa).HasForeignKey(c => c.ClientId).OnDelete(DeleteBehavior.Cascade);
 
-        builder.Entity<Client>().ToTable("Client");
+        builder.Entity<Klienti>().ToTable("Klientet");
         builder.Entity<Pagesa>().ToTable("Pagesa");
+        builder.Entity<Huazimi>().ToTable("Huazimi");
+        builder.Entity<Rezervimi>().ToTable("Rezervimi");
 
         // Customize the ASP.NET Identity model and override the defaults if needed.
         // For example, you can rename the ASP.NET Identity table names and more.

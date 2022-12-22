@@ -33,7 +33,7 @@ namespace BOOKS.Controllers
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
 
-            var klientet = from s in _context.Clients
+            var klientet = from s in _context.Klienti
                          select s;
 
             if (searchString != null)
@@ -51,7 +51,7 @@ namespace BOOKS.Controllers
             }
 
             int pageSize = 20;
-            return View(await PaginatedList<Client>.CreateAsync(klientet.AsNoTracking(), pageNumber ?? 1, pageSize));
+            return View(await PaginatedList<Klienti>.CreateAsync(klientet.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // public async Task<IActionResult> IndexAsync()
@@ -66,7 +66,7 @@ namespace BOOKS.Controllers
                 return NotFound();
             }
       
-            var klientet = await _context.Clients
+            var klientet = await _context.Klienti
                 .FirstOrDefaultAsync(m => m.id == id);
 
             if (klientet == null)
@@ -84,7 +84,7 @@ namespace BOOKS.Controllers
                 return NotFound();
             }
 
-            var k = await _context.Clients.FindAsync(id);
+            var k = await _context.Klienti.FindAsync(id);
             if (k == null)
             {
                 return NotFound();
@@ -95,7 +95,7 @@ namespace BOOKS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Emri,Email,NumriTel,Aktiv,created_at,deleted_at")] Client k)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Emri,Email,NumriTel,Aktiv,created_at,deleted_at")] Klienti k)
         {
             if (id != k.id)
             {
@@ -138,7 +138,7 @@ namespace BOOKS.Controllers
         [ValidateAntiForgeryToken]
         
         public async Task<IActionResult> Create(
-            [Bind("Emri,Email,NumriTel,Aktiv")] Client k)
+            [Bind("Emri,Email,NumriTel,Aktiv")] Klienti k)
         {
             try
             {
@@ -168,7 +168,7 @@ namespace BOOKS.Controllers
                 return NotFound();
             }
 
-            var k = await _context.Clients
+            var k = await _context.Klienti
                 .FirstOrDefaultAsync(m => m.id == id);
             if (k == null)
             {
@@ -183,8 +183,8 @@ namespace BOOKS.Controllers
         
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var k = await _context.Clients.FindAsync(id);
-            _context.Clients.Remove(k);
+            var k = await _context.Klienti.FindAsync(id);
+            _context.Klienti.Remove(k);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -192,7 +192,7 @@ namespace BOOKS.Controllers
 
         private bool KlientiExists(int id)
         {
-            return _context.Clients.Any(e => e.id == id);
+            return _context.Klienti.Any(e => e.id == id);
         }
     }
 }

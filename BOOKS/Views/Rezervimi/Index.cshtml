@@ -1,6 +1,5 @@
 @using BOOKS.Areas.Identity.Data;
-
-@model PaginatedList<BOOKS.Models.Pagesa>
+@model PaginatedList<BOOKS.Models.Rezervimi>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,12 +8,15 @@
 <title>Index</title>
 
 <!-- Page Heading -->
-<h1 style="color:white;">Pagesat</h1>
+<h1 style="color:white;">Rezervimet</h1>
+
+
+
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="float-right">
-            <a class="btn btn-primary" asp-action="Create">Create new</a>
+            <a class="btn btn-primary" asp-action="Create">Rezervo</a>
         </div>
         <h6 class="m-0 font-weight-bold text-primary"></h6>
     </div>
@@ -23,49 +25,45 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Shuma</th>
-                        <th>Klienti</th>
+                        <th>ID-Klienti</th>
+                        <th>ID-Libri</th>
                         <th>Aktiv</th>
-                        <th>DataEPageses</th>
-                        <th>DataESkadimit</th>
+                        <th>Data Rezervimit</th>
+                        <th>...</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>#</th>
-                        <th>Shuma</th>
-                        <th>Klienti</th>
+                        <th>ID-Klienti</th>
+                        <th>ID-Libri</th>
                         <th>Aktiv</th>
-                        <th>DataEPageses</th>
-                        <th>DataESkadimit</th>
+                        <th>Data Rezervimit</th>
+                        <th>...</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@Html.DisplayFor(model => item.id)</td>
-                        <td>@Html.DisplayFor(model => item.Shuma)</td>
-                        <td>@Html.DisplayFor(model => item.Klienti_id)</td>
-                        <td>@Html.DisplayFor(model => item.Active)</td>
-                        <td>@Html.DisplayFor(model => item.DataEPageses)</td>
-                        <td>@Html.DisplayFor(model => item.DataESkadimit)</td>
-                        <td>
-                            <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.id })">Edit</a>
-                            <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.id })">Details</a>
-                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id })">Delete</a>
+                        <tr>
+                            <td>@Html.DisplayFor(model => item.Klienti_id)</td>
+                            <td>@Html.DisplayFor(model => item.Libra_id)</td>
+                            <td>@Html.DisplayFor(model => item.Aktiv)</td>
+                            <td>@Html.DisplayFor(model => item.created_at)</td>
+                            <td>
+                                 
+                                
+                            
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id })">Delete</a>
+                            </td>
+                        </tr>
 
-                        </td>
-                    </tr>
                     }
-                </tbody>
 
+                </tbody>
             </table>
         </div>
     </div>
 </div>
-
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
