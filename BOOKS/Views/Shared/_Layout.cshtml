@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,6 +24,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -31,19 +34,22 @@
                         @if(User.IsInRole(Roles.Admin.ToString())){
 
                         //all local users can view
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Klienti" asp-action="Index">Clients</a>
                         </li>
+
+                        //only Users that are logged in can view Huazimin dhe Rezervimin
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Pagesa" asp-action="Index">Payment</a>
                         </li>
-
-                        //only Users that are logged in can view Huazimin dhe Rezervimin
-                        @if (User.Identity.IsAuthenticated)
-                        {
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Huazimi" asp-action="Index">Huazimi</a>
                         </li>
@@ -51,6 +57,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Rezervimi" asp-action="Index">Rezervimi</a>
                         </li>
                         }
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/Perdoruesit">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Perdoruesit</span>
+                        </a>
+                        </li>
+
                         <li class="nav-item">
                         <a class="nav-link" href="/statistika">
                             <i class="fas fa-fw fa-table"></i>
@@ -62,7 +76,9 @@
                     </ul>
                 </div>
 
+                @* Log In And Register *@
                 <partial name="_LoginPartial"/>
+
             </div>
         </nav>
     </header>
@@ -79,7 +95,14 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="/js/demo/chart-bar-demo.js"></script>
+
+    
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>
+</html> 
