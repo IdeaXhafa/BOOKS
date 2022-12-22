@@ -1,7 +1,7 @@
-﻿
+
 @using BOOKS.Areas.Identity.Data;
 
-@model PaginatedList<BOOKS.Models.Book>
+@model PaginatedList<BOOKS.Models.AudioBooks>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,21 +10,17 @@
 <title>Index</title>
 
 <!-- Page Heading -->
-<h1 style="color:white;">Librat</h1>
+<h1 style="color:white;">Audio Books</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="float-right">
             <a class="btn btn-primary" asp-action="Create">Create new</a>
-            <button type="button" class="btn btn-secondary" onclick="window.location='/book/getfreebooks';">Only Show Free Books</button>
+            @* <button type="button" class="btn btn-secondary" onclick="window.location='/book/getfreebooks';">Only Show Free Books</button> *@
         </div>
         <h6 class="m-0 font-weight-bold text-primary"></h6>
     </div>
-
-    @* button that sends to GetFreeBooks *@
-    @* <button type="button" class="btn btn-outline-secondary" style="width: 150px;" onclick="window.location='/book/getfreebooks';">Only Show Free Books</button> *@
-
     <div class="card-body">
         <div class="table-responsive">
             <div class="float-right">
@@ -44,7 +40,7 @@
                         <th>#</th>
                         <th>Titulli</th>
                         <th>Autori</th>
-                        <th>E Lire</th>
+                        <th>Listeners</th>
                         <th>Veprime</th>
                     </tr>
                 </thead>
@@ -53,7 +49,7 @@
                         <th>#</th>
                         <th>Titulli</th>
                         <th>Autori</th>
-                        <th>E Lire</th>
+                        <th>Listeners</th>
                         <th>Veprime</th>
                     </tr>
                 </tfoot>
@@ -66,7 +62,7 @@
                     <td>@Html.DisplayFor(model => item.id)</td>
                     <td>@Html.DisplayFor(model => item.Titulli)</td>
                     <td>@Html.DisplayFor(model => item.Autori)</td>
-                    <td>@Html.DisplayFor(model => item.E_Lire)</td>
+                    <td>@Html.DisplayFor(model => item.Listeners)</td>
                     <td>
              
                         <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.id })">Edit</a>

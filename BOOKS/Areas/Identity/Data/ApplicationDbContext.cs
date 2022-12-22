@@ -23,6 +23,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Pagesa> Pagesa {get;set;}
     public DbSet<Huazimi> Huazimi { get; set; }
     public DbSet<Rezervimi> Rezervimi { get; set; }
+    public DbSet<AudioBooks> AudioBooks { get; set; }
+    public DbSet<Category> Category { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
