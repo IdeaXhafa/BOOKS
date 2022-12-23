@@ -1,8 +1,7 @@
-@* @model IEnumerable<BOOKS.Models.Book> *@
 
 @using BOOKS.Areas.Identity.Data;
 
-@model PaginatedList<BOOKS.Models.Book>
+@model PaginatedList<BOOKS.Models.AudioBooks>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,20 +10,21 @@
 <title>Index</title>
 
 <!-- Page Heading -->
-<h1 style="color:white;">Librat e Lira</h1>
+<h1 style="color:white;">Audio Books</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        @* <div class="float-right">
-            <a class="btn btn-primary" asp-action="Create">Create new</a>
-        </div> *@
+        <div class="float-right">
+            @* <a class="btn btn-primary" asp-action="Create">Create new</a> *@
+            @* <button type="button" class="btn btn-secondary" onclick="window.location='/book/getfreebooks';">Only Show Free Books</button> *@
+        </div>
         <h6 class="m-0 font-weight-bold text-primary"></h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <div class="float-right">
-                <form asp-action="GetFreeBooks" method="get">
+                <form asp-action="Index" method="get">
                     <div class="form-actions no-color">
                         <p>
                             Find by name: <input type="text" name="SearchString" class="form-control form-control-sm" value="@ViewData["CurrentFilter"]" />
@@ -40,7 +40,7 @@
                         <th>#</th>
                         <th>Titulli</th>
                         <th>Autori</th>
-                        @* <th>E Lire</th> *@
+                        @* <th>Listeners</th> *@
                         <th>Veprime</th>
                     </tr>
                 </thead>
@@ -49,7 +49,7 @@
                         <th>#</th>
                         <th>Titulli</th>
                         <th>Autori</th>
-                        <th>E Lire</th>
+                        <th>Listeners</th>
                         <th>Veprime</th>
                     </tr>
                 </tfoot> *@
@@ -59,26 +59,19 @@
                 {
                 @foreach (var item in Model)
                 {
-                    @if(item.E_Lire == true)
-                    {<tr>
+                    @if(item.Listeners > 1000)
+                    {
+                    <tr>
                     <td>@Html.DisplayFor(model => item.id)</td>
                     <td>@Html.DisplayFor(model => item.Titulli)</td>
                     <td>@Html.DisplayFor(model => item.Autori)</td>
-                    
-                    @* <td>@Html.DisplayFor(model => item.E_Lire)</td> *@
-                    @* <td>@((@Html.DisplayFor(model => item.E_Lire)) == 'true' ? "eshte e lire":"nuk eshte e lire")</td> *@
-                    @* <td>@(item.E_Lire) == 'True'</td>*@
-                    @* @if(item.E_Lire == true)
-                    {
-                        <td>@Html.DisplayFor(model => item.E_Lire)</td>
-                    } else
-                    {
-                        <td>You can currently not purchase this book</td>
-                    } *@
+                    @* <td>@Html.DisplayFor(model => item.Listeners)</td> *@
                     <td>
+             
                         <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.id })">Edit</a>
                         <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.id })">Details</a>
                         <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id })">Delete</a>
+
                     </td>
                     </tr>
                     }
@@ -88,3 +81,33 @@
             </table>
         </div>
     </div>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <div class="pr-4">
+        <ul style="display: flex; float:right; list-style: none; border-radius: .35rem">
+            <li class="paginate_button page-item previous" id="dataTable_previous">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   aria-controls="dataTable" data-dt-idx="1"
+                   class="btn page-link @prevDisabled">
+                    Previous
+                </a>
+            </li>
+            <li class="paginate_button page-item next" id="dataTable_next">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   aria-controls="dataTable" data-dt-idx="2"
+                   class="btn page-link @nextDisabled">
+                    Next
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -191,5 +191,37 @@ namespace BOOKS.Controllers
         {
             return _context.AudioBooks.Any(e => e.id == id);
         }
+
+        public async Task<IActionResult> GetMostListeners(
+                string sortOrder,
+                string currentFilter,
+                string searchString,
+                int? pageNumber)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var books = from s in _context.AudioBooks
+                         select s;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(s => s.Titulli.Contains(searchString) || s.Autori.Contains(searchString));
+            }
+
+            int pageSize = 20;
+            return View(await PaginatedList<AudioBooks>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
     }
 }
