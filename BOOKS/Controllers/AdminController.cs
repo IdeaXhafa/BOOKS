@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BOOKS.Areas.Identity.Data;
 
 namespace BOOKS.Controllers
 {
@@ -14,8 +15,8 @@ namespace BOOKS.Controllers
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly UserManager<IdentityUser> userManager;
-        public AdminController(RoleManager<IdentityRole> roleManager,UserManager<IdentityUser> userManager)
+        private readonly UserManager<ApplicationUser> userManager;
+        public AdminController(RoleManager<IdentityRole> roleManager,UserManager<ApplicationUser> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
