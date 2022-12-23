@@ -16,7 +16,7 @@ namespace BOOKS.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public BookController(ApplicationDbContext context)
+        public MagazinesController(ApplicationDbContext context)
         {
             _context = context;
         }
