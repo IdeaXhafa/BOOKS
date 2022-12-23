@@ -31,6 +31,9 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         }
+
+                        @* only admins have access *@
+
                         @if(User.IsInRole(Roles.Admin.ToString())){
 
                         //all local users can view
