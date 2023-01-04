@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using BOOKS.Areas.Identity.Data;
 using BOOKS.Models;
 
 namespace BOOKS.Controllers

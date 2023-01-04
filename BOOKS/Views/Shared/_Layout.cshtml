@@ -34,20 +34,31 @@
 
                         @* only admins have access *@
 
-                        @if(User.IsInRole(Roles.Admin.ToString())){
+                        @* @if(User.IsInRole(Roles.Admin.ToString())){ *@
 
-                        //all local users can view
+                        @* all local users can view *@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
                         </li>
 
+                         @* <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                        </li> *@
+
+                        <select class="form-control"asp-area="" asp-controller="Category" asp-action="Index" style="width: 160px;">
+                            <option>Choose Category</option> 
+                            <option><a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a></option> 
+                            <option> <a class="nav-link text-dark" asp-area="" asp-controller="AudioBooks" asp-action="Index">AudioBooks</a></option> 
+                        </select>
+
+                        @* 
                         <li class="nav-item">
                             <a class="nav-link" href="/Category">
                                 <i class="fas fa-fw fa-table"></i>
                                 <span>Categories</span>
                             </a>
-                        </li>
+                        </li> *@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="AudioBooks" asp-action="Index">AudioBooks</a>
@@ -56,7 +67,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Klienti" asp-action="Index">Clients</a>
                         </li>
 
-                        //only Users that are logged in can view Huazimin dhe Rezervimin
+                        @* only Users that are logged in can view Huazimin dhe Rezervimin *@
 
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -73,10 +84,7 @@
                         }
 
                         <li class="nav-item">
-                        <a class="nav-link" href="/Perdoruesit">
-                            <i class="fas fa-fw fa-table"></i>
-                            <span>Perdoruesit</span>
-                        </a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Perdoruesit" asp-action="Index">Perdoruesit</a>
                         </li>
 
                         @* <li class="nav-item">
@@ -89,7 +97,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Roles">Dashboard</a>
                         </li>
-                        }
+                        @* } *@
                     
                     </ul>
                 </div>
