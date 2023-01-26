@@ -7,7 +7,7 @@ using BOOKS.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Libraryms.Controllers
+namespace BOOKS.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class StatistikaController : Controller

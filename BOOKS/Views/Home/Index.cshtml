@@ -1,13 +1,10 @@
-﻿
+﻿@using BOOKS.Areas.Identity.Data;
+
+@model PaginatedList<BOOKS.Models.Book>
+
 @{
     ViewData["Title"] = "Home Page";
-    //string imagePath = Url.Content("~/images/free-shipping.jpg"); 
 }
-
-@* <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> *@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,34 +32,16 @@
 
 <body>
 
-<div id="content" class="w-100" 
-@* style=" background-image: url(https://d4804za1f1gw.cloudfront.net/wp-content/uploads/sites/50/2018/11/06110356/hero.jpg);background-repeat:no-repeat; " *@
->
-    <h1 style="color:white;">Welcome to our Library Management!</h1>
-    @* <img src="images/lib.jpg" style="width:300px;height:100px"/>
-    <h3>upto 80% off</h3> *@
+<div id="content" class="w-100">
+    <img src="images/book.png" style="width: 600px;height: 400px;float: right;" />
+    <br/><br/>
+    <h2>Welcome to Our Library Management</h2><br/>
+    <h4>Find your favorite <br/> Books & Audiobooks!</h4><br/>
+    <h4>Quality and Top Prices assured!</h4>
+    <button type="button" class="btn btn-primary" onclick="window.location='../../book';">SHOP NOW</button>
 </div>
-<section class="home" id="home">
-
-    <div class="row">
-
-        <div class="swiper books-slider">
-            <div class="swiper-wrapper">
-                <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-5.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-6.png" alt=""></a>
-            </div>
-            <img src="image/stand.png" class="stand" alt="">
-        </div>
-
-    </div>
-
-</section>
-
-<section class="icons-container">
+<br/><br/><br/>
+<section class="icons-container" style="height: 100%;width: 100%;display: flex;">
 
     <div class="icons">
         <img src="images/shipping.jpg" style="width:90px;height:90px"/>
@@ -90,8 +69,14 @@
 
 </section>
 
+<div class="deal" style="height:400px;justify-content:center;align-items: center;padding:80px;display: grid;">
+    <h3>Get Our Special Deals!</h3>
+    <h3>Only for purchases YOU make as Our Client</h3>
+    <h6>Want to become a Client?</h6><br/>
+    <button type="button" style="width: 130px;" class="btn btn-secondary" onclick="window.location='../../identity/account/register';">Join Us Now</button>
+</div>
 
-        <script src="/js/script.js"></script>
+    <script src="/js/script.js"></script>
 
 </body>
 </html>
