@@ -38,10 +38,10 @@
     <h2>Welcome to Our Library Management</h2><br/>
     <h4>Find your favorite <br/> Books & Audiobooks!</h4><br/>
     <h4>Quality and Top Prices assured!</h4>
-    <button type="button" class="btn btn-primary" onclick="window.location='../../book';">SHOP NOW</button>
+    <button type="button" class="btn btn-success" onclick="window.location='../../book';">SHOP NOW</button>
 </div>
 <br/><br/><br/>
-<section class="icons-container" style="height: 100%;width: 100%;display: flex;">
+<section class="icons-container" style="height: 100%; width: 100%; display: flex;padding: 90px;">
 
     <div class="icons">
         <img src="images/shipping.jpg" style="width:90px;height:90px"/>
@@ -69,15 +69,44 @@
 
 </section>
 
-<div class="deal" style="height:400px;justify-content:center;align-items: center;padding:80px;display: grid;">
+ <img name="slide" width="100%" height="500">
+
+<div class="deal" style="height: 400px; text-align: center; padding: 80px; display: grid;">
     <h3>Get Our Special Deals!</h3>
     <h3>Only for purchases YOU make as Our Client</h3>
-    <h6>Want to become a Client?</h6><br/>
-    <button type="button" style="width: 130px;" class="btn btn-secondary" onclick="window.location='../../identity/account/register';">Join Us Now</button>
+    <h6>Want to become a Client?</h6>
+    <button type="button" style="width: 130px; margin-left: auto; margin-right: auto;" class="btn btn-secondary" 
+    onclick="window.location='../../identity/account/register';">Join Us Now</button>
 </div>
 
     <script src="/js/script.js"></script>
 
 </body>
+
+
+<script>
+    var i = 0;
+    var images = [];
+    var time = 4000;
+
+    images[0] = 'images/slide1.jpg';
+    images[1] = 'images/slide2.jpg';
+    images[2] = 'images/slide4.jpg';
+    images[3] = 'images/slide5.jpg';
+
+    function changeImg(){
+        document.slide.src = images[i];
+
+        if(i<images.length - 1){
+            i++;
+        } else {
+            i = 0;
+        }
+
+        setTimeout("changeImg()", time);
+    }
+    window.onload = changeImg;
+
+</script>
 </html>
 
