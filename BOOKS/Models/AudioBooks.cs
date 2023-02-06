@@ -13,6 +13,6 @@ namespace BOOKS.Models
         [Required]
         public string Titulli { get; set; }
         public string Autori { get; set; }
-    public int Listeners { get; set; }
+        public int Listeners { get; set; }
     }
 }
