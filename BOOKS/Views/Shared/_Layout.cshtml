@@ -36,9 +36,6 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         }
-
-                       
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
                         </li>
@@ -151,7 +148,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Roles">Dashboard</a>
                         </li>
       </ul>
-  </nav>
+    </nav>
         <div id="page-content-wrapper">
             <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas" style="bottom: 200px;">
                 <span class="hamb-top"></span>
@@ -160,7 +157,6 @@
             </button>
             
         </div>
-    <!-- /#wrapper -->
         @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BOOKS</a>
@@ -235,19 +231,17 @@
         </nav> *@
     </header>
 
-    
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - BOOKS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
