@@ -21,41 +21,41 @@ namespace BOOKS.Controllers
             _context = context;
         }
 
-        // public async Task<IActionResult> Index(){
-        //     return View(await _context.Books.ToListAsync());
-        // }
-
-        public async Task<IActionResult> Index(
-                string sortOrder,
-                string currentFilter,
-                string searchString,
-                int? pageNumber)
-        {
-            ViewData["CurrentSort"] = sortOrder;
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["CurrentFilter"] = searchString;
-
-            var books = from s in _context.Books
-                         select s;
-
-            if (searchString != null)
-            {
-                pageNumber = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                books = books.Where(s => s.Titulli.Contains(searchString) || s.Autori.Contains(searchString));
-            }
-
-            int pageSize = 20;
-            return View(await PaginatedList<Book>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
+        public async Task<IActionResult> Index(){
+            return View(await _context.Books.ToListAsync());
         }
+
+        // public async Task<IActionResult> Index(
+        //         string sortOrder,
+        //         string currentFilter,
+        //         string searchString,
+        //         int? pageNumber)
+        // {
+        //     ViewData["CurrentSort"] = sortOrder;
+        //     ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //     ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+        //     ViewData["CurrentFilter"] = searchString;
+
+        //     var books = from s in _context.Books
+        //                  select s;
+
+        //     if (searchString != null)
+        //     {
+        //         pageNumber = 1;
+        //     }
+        //     else
+        //     {
+        //         searchString = currentFilter;
+        //     }
+
+        //     if (!String.IsNullOrEmpty(searchString))
+        //     {
+        //         books = books.Where(s => s.Titulli.Contains(searchString) || s.Autori.Contains(searchString));
+        //     }
+
+        //     int pageSize = 20;
+        //     return View(await PaginatedList<Book>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
+        // }
 
         // public async Task<IActionResult> Details(int? id)
         // {
