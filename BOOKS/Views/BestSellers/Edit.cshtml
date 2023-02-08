@@ -1,0 +1,41 @@
+@model BestSeller
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 style="color:white;">Edit</h2>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form class="form" asp-action="Edit" method="post">
+            <div class="modal-header">
+                <h4 class="modal-title">Edito Best Seller</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location='/bestsellers';">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Titulli:</label>
+                    <input type="text" class="form-control" asp-for="Titulli" />
+                    <span asp-validation-for="Titulli"></span>
+                </div>
+                <div class="form-group">
+                    <label>Autori:</label>
+                    <input type="text" class="form-control" asp-for="Autori" />
+                </div>
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <input type="text" class="form-control" asp-for="Rating" />
+                </div>
+                <div class="form-group">
+                    <label>Year:</label>
+                    <input type="text" class="form-control" asp-for="Year" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="button" class="btn btn-dark" value="Anulo" onclick="window.location='/bestsellers';">
+                <input type="submit" value="Edito" class="btn btn-primary float-right">
+            </div>
+        </form>
+    </div>
+</div>

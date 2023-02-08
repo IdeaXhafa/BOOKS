@@ -1,4 +1,4 @@
-@Html.DropDownList("MyTestList", null, new { @class = "btn btn-default dropdown-toggle" })
+@* @Html.DropDownList("MyTestList", null, new { @class = "btn btn-default dropdown-toggle" }) *@
 @using BOOKS.Areas.Identity.Data;
 @model PaginatedList<BOOKS.Models.Category>
 
@@ -6,20 +6,28 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="dropdown">
-    @* <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+@* <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
         Category
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">test1</a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">test2</a></li>
-    </ul> *@
-@* 
+    </ul>
+
     <select class="form-control" id="StudentGender" name="StudentGender">
         <option>Select Gender</option> 
         <option>Male</option> 
         <option>Female</option> 
-    </select> *@
+    </select>
 
+</div> *@
+
+<div>
+    <h2>What would you like to read today?</h2>
+    <button type="button" class="btn btn-primary" onclick="window.location='/book';">Books</button>
+    <button type="button" class="btn btn-sucess" onclick="window.location='/magazines';">BestSellers</button>
+    <button type="button" class="btn btn-secondary" onclick="window.location='/audiobooks';">AudioBooks</button>
+    <button type="button" class="btn btn-info" onclick="window.location='/magazines';">Magazines</button>
 </div>

@@ -35,22 +35,24 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Klienti" asp-action="Index">Clients</a>
+                            </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
                         </li>
-
-                        <select class="form-control"asp-area="" asp-controller="Category" asp-action="Index" style="width: 160px;">
-                            <option>Categories</option> 
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
-                            <option> <a class="nav-link text-dark" asp-area="" asp-controller="AudioBooks" asp-action="Index">AudioBooks</a></option> 
-                        </select>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="BestSellers" asp-action="Index">BestSellers</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="AudioBooks" asp-action="Index">AudioBooks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Klienti" asp-action="Index">Clients</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Magazines" asp-action="Index">Magazines</a>
                         </li>
 
                         @if (User.Identity.IsAuthenticated)
@@ -119,7 +121,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="AudioBooks" asp-action="Index">AudioBooks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Klienti" asp-action="Index">Clients</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="BestSellers" asp-action="Index">BestSellers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="AudioBooks" asp-action="Index">AudioBooks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Magazines" asp-action="Index">Magazines</a>
                         </li>
 
                         @if (User.Identity.IsAuthenticated)
@@ -135,19 +143,6 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Rezervimi" asp-action="Index">Rezervimi</a>
                         </li>
                         }
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Perdoruesit" asp-action="Index">Perdoruesit</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Statistika" asp-action="Index">Statistika</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Roles">Dashboard</a>
-                        </li>
-      </ul>
     </nav>
         <div id="page-content-wrapper">
             <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas" style="bottom: 200px;">

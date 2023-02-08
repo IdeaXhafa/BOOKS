@@ -25,6 +25,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Rezervimi> Rezervimi { get; set; }
     public DbSet<AudioBooks> AudioBooks { get; set; }
     public DbSet<Category> Category { get; set; }
+    public DbSet<Magazines> Magazines { get; set; }
+    public DbSet<BestSeller> BestSeller { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

@@ -12,20 +12,16 @@ using BOOKS.Models;
 
 namespace BOOKS.Controllers
 {
-    public class MagazinesController : Controller
+    public class BestSellersController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MagazinesController(ApplicationDbContext context)
+        public BestSellersController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // public async Task<IActionResult> Index(){
-        //     return View(await _context.Magazines.ToListAsync());
-        // }
-
-        public async Task<IActionResult> Index(
+       public async Task<IActionResult> Index(
                 string sortOrder,
                 string currentFilter,
                 string searchString,
@@ -36,7 +32,7 @@ namespace BOOKS.Controllers
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
 
-            var books = from s in _context.Magazines
+            var books = from s in _context.BestSeller
                          select s;
 
             if (searchString != null)
@@ -50,11 +46,11 @@ namespace BOOKS.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                books = books.Where(s => s.name.Contains(searchString) || s.company.Contains(searchString) || s.description.Contains(searchString));
+                books = books.Where(s => s.Titulli.Contains(searchString) || s.Autori.Contains(searchString));
             }
 
             int pageSize = 20;
-            return View(await PaginatedList<Magazines>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
+            return View(await PaginatedList<BestSeller>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -64,7 +60,7 @@ namespace BOOKS.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Magazines
+            var book = await _context.BestSeller
                 .FirstOrDefaultAsync(m => m.id == id);
 
             if (book == null)
@@ -84,13 +80,13 @@ namespace BOOKS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("name,company,description")] Magazines magazine)
+            [Bind("Titulli,Autori,Rating,Year")] BestSeller book)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(magazine);
+                    _context.Add(book);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -102,10 +98,10 @@ namespace BOOKS.Controllers
                     "Try again, and if the problem persists " +
                     "see your system administrator.");
             }
-            return View(magazine);
+            return View(book);
+
         }
 
-        // GET: Movies/Edit/5
         [HttpGet]
 
         public async Task<IActionResult> Edit(int? id)
@@ -115,7 +111,7 @@ namespace BOOKS.Controllers
                 return NotFound();
             }
 
-            var books = await _context.Magazines.FindAsync(id);
+            var books = await _context.BestSeller.FindAsync(id);
             if (books == null)
             {
                 return NotFound();
@@ -125,9 +121,9 @@ namespace BOOKS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,name,company,description")] Magazines magazine)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Titulli,Autori,Rating,Year")] BestSeller books)
         {
-            if (id != magazine.id)
+            if (id != books.id)
             {
                 return NotFound();
             }
@@ -136,16 +132,17 @@ namespace BOOKS.Controllers
             {
                 try
                 {
-                    var lib = _context.Magazines.FirstOrDefault(l => l.id == magazine.id);
-                    lib.name = magazine.name;
-                    lib.company = magazine.company;
-                    lib.description = magazine.description;
+                    var lib = _context.BestSeller.FirstOrDefault(l => l.id == books.id);
+                    lib.Titulli = books.Titulli;
+                    lib.Autori = books.Autori;
+                    lib.Rating = books.Rating;
+                    lib.Year = books.Year;
                     _context.Update(lib);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LibraExists(magazine.id))
+                    if (!LibraExists(books.id))
                     {
                         return NotFound();
                     }
@@ -156,7 +153,7 @@ namespace BOOKS.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(magazine);
+            return View(books);
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -166,7 +163,7 @@ namespace BOOKS.Controllers
                 return NotFound();
             }
 
-            var l = await _context.Magazines
+            var l = await _context.BestSeller
                 .FirstOrDefaultAsync(m => m.id == id);
             if (l == null)
             {
@@ -180,15 +177,47 @@ namespace BOOKS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var l = await _context.Magazines.FindAsync(id);
-            _context.Magazines.Remove(l);
+            var l = await _context.BestSeller.FindAsync(id);
+            _context.BestSeller.Remove(l);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LibraExists(int id)
         {
-            return _context.Magazines.Any(e => e.id == id);
+            return _context.BestSeller.Any(e => e.id == id);
+        }
+
+        public async Task<IActionResult> GetRatings(
+                string sortOrder,
+                string currentFilter,
+                string searchString,
+                int? pageNumber)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var books = from s in _context.BestSeller
+                         select s;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(s => s.Titulli.Contains(searchString) || s.Autori.Contains(searchString));
+            }
+
+            int pageSize = 20;
+            return View(await PaginatedList<BestSeller>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
     }
 }

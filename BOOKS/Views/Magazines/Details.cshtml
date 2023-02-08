@@ -1,0 +1,24 @@
+@model BOOKS.Models.Magazines;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:black;">
+        <tr>
+            <td bgcolor="white">ID</td>
+            <td bgcolor="white">name</td>
+            <td bgcolor="white">company</td>
+            <td bgcolor="white">description</td>
+
+
+        </tr>
+        <tr>
+            <td bgcolor="white">@Model.id</td>
+            <td bgcolor="white">@Model.name</td>
+            <td bgcolor="white">@Model.company</td>
+            <td bgcolor="white">@Model.description</td>
+        </tr>
+    </table>
+</div>
