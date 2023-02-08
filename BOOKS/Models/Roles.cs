@@ -1,4 +1,5 @@
 public enum Roles{
     Admin,
-    User
+    User,
+    Suspended
 }
